@@ -4,7 +4,7 @@ WORKDIR /build
 
 # Cache Maven dependencies
 COPY pom.xml .
-RUN mvn dependency:go-offline -B
+RUN mvn dependency:go-offline -B || true
 
 # Copy source code and build executable JAR
 COPY src ./src
