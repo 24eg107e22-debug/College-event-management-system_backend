@@ -1,7 +1,24 @@
 import axios from 'axios';
 
+/**
+ * Dynamically resolves the API base URL:
+ * 1. Checks VITE_API_BASE_URL (configured in Render Static Site environment variables)
+ * 2. Falls back to localhost in Vite DEV mode
+ * 3. Falls back to relative '/api' in production
+ */
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    const raw = import.meta.env.VITE_API_BASE_URL.trim().replace(/\/+$/, '');
+    return raw.endsWith('/api') ? raw : `${raw}/api`;
+  }
+  if (import.meta.env.DEV) {
+    return 'http://localhost:8080/api';
+  }
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: getBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },
