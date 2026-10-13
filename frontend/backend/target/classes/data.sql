@@ -1,6 +1,0 @@
--- CampusConnect Sample Seed Data Reference Script
--- The application automatically executes DataInitializer on startup if the database is fresh.
--- Default test users:
--- Admin: admin@campusconnect.com / admin123 (Role: ADMIN)
--- Organizer: organizer@campusconnect.com / organizer123 (Role: ORGANIZER)
--- Student: student@campusconnect.com / student123 (Role: STUDENT)
